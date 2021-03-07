@@ -9,6 +9,7 @@ FUNDA_BASE_URL = "https://www.funda.nl/en"
 
 
 def scrape(html: str) -> List[Post]:
+    """Extract real estate posts and their data from the given HTML."""
     soup = BeautifulSoup(html, features="html.parser")
     search_results = soup.find_all("li", {"class": "search-result"})
 

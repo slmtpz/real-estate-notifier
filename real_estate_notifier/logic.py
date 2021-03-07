@@ -4,7 +4,8 @@ from .models import Post
 
 
 def select_posts_to_notify(current_posts: List[Post], last_posts: List[Post]) -> List[Post]:
-    """
+    """Determine the posts to be notified with.
+
     current_posts: N many posts that are sorted on date in descending order.
     last_posts: M many posts that are sorted on date in descending order.
 
@@ -24,4 +25,5 @@ def select_posts_to_notify(current_posts: List[Post], last_posts: List[Post]) ->
 
 
 def get_new_last_posts(posts: List[Post], count: int):
+    """Determine the current last posts."""
     return posts[:count]

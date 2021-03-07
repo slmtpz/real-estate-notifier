@@ -9,6 +9,7 @@ table = dynamodb.Table("real-estate-notifier-last-posts")
 
 
 def get_last_posts() -> List[Post]:
+    """Get last posts from the previous invocation."""
     scan_results = table.scan()
 
     posts: List[Post] = []
@@ -21,6 +22,7 @@ def get_last_posts() -> List[Post]:
 
 
 def update_last_posts(last_posts: List[Post]):
+    """Update the database with the current last posts."""
     for i, last_post in enumerate(last_posts):
         item = {
             "data": "last-posts",

@@ -1,16 +1,34 @@
+import os
+
 import requests
 
 
 def load(url: str) -> str:
-    # [PRES] Try without user agent first. Dump and try with the user agent.
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"
-    }
-    resp = requests.get(url, headers=headers)
+    """Get the source of a web page."""
+    print(_get_proxies())
+    resp = requests.get(url, headers=_get_headers(), proxies=_get_proxies())
 
     return resp.text
 
 
-def dump_to_file(text):
+def _get_headers() -> dict:
+    """Instead of requests/Python's default user agent, use a normal user agent."""
+    return {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,"
+            " like Gecko) Chrome/88.0.4324.150 Safari/537.36"
+        )
+    }
+
+
+def _get_proxies() -> dict:
+    """Send the loading request over a proxy."""
+    return {
+        "https": os.environ.get("HTTPS_PROXY"),
+        "http": os.environ.get("HTTPS_PROXY"),
+    }
+
+
+def _dump_to_file(text):
     with open("dump.html", "w") as file:
         file.write(text)

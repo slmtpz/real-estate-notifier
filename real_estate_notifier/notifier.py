@@ -10,6 +10,7 @@ from .models import Post
 
 
 def notify(posts: List[Post]):
+    """Notify the recipient with the new posts."""
     if len(posts) == 0:
         return
 
@@ -24,6 +25,7 @@ def notify(posts: List[Post]):
 
 
 def send_email(html):
+    """Send an HTML email to the recipient."""
     sender_email = os.environ["SENDER_EMAIL"]
     receiver_email = os.environ["RECEIVER_EMAIL"]
     password = os.environ["SENDER_EMAIL_PASSWORD"]
