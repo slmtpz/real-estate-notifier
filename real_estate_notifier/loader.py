@@ -5,7 +5,6 @@ import requests
 
 def load(url: str) -> str:
     """Get the source of a web page."""
-    print(_get_proxies())
     resp = requests.get(url, headers=_get_headers(), proxies=_get_proxies())
 
     return resp.text
