@@ -28,6 +28,6 @@ def _get_proxies() -> dict:
     }
 
 
-def _dump_to_file(text):
-    with open("dump.html", "w") as file:
+def _dump_to_file(text, name="dump"):
+    with open(f"htmls/{name}.html", "w") as file:
         file.write(text)
