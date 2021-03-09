@@ -1,8 +1,8 @@
-from typing import List
 import os
 import smtplib
 import ssl
 from email.mime.text import MIMEText
+from typing import List
 
 import pandas as pd
 
@@ -17,10 +17,8 @@ def notify(posts: List[Post]):
     posts_in_dict = [post.dict() for post in posts]
     html = pd.DataFrame(posts_in_dict).to_html(
         escape=False,
-        formatters={
-            "post_url": _path_to_href_html,
-            "image_url": _path_to_image_html
-        })
+        formatters={"post_url": _path_to_href_html, "image_url": _path_to_image_html},
+    )
     send_email(html)
 
 
@@ -38,9 +36,7 @@ def send_email(html):
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
-        server.sendmail(
-            sender_email, receiver_email, message.as_string()
-        )
+        server.sendmail(sender_email, receiver_email, message.as_string())
 
 
 def _path_to_image_html(path):

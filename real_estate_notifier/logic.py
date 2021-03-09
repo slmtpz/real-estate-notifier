@@ -3,7 +3,9 @@ from typing import List
 from .models import Post
 
 
-def select_posts_to_notify(current_posts: List[Post], last_posts: List[Post]) -> List[Post]:
+def select_posts_to_notify(
+    current_posts: List[Post], last_posts: List[Post]
+) -> List[Post]:
     """Determine the posts to be notified with.
 
     current_posts: N many posts that are sorted on date in descending order.

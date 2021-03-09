@@ -1,8 +1,8 @@
-from real_estate_notifier.loader import load
-from real_estate_notifier.scraper import scrape
 from real_estate_notifier.db import get_last_posts, update_last_posts
-from real_estate_notifier.logic import select_posts_to_notify, get_new_last_posts
+from real_estate_notifier.loader import load
+from real_estate_notifier.logic import get_new_last_posts, select_posts_to_notify
 from real_estate_notifier.notifier import notify
+from real_estate_notifier.scraper import scrape
 
 FUNDA_URL = (
     "https://www.funda.nl/en/huur/amsterdam/straat-museumplein/1000-1500/+2km/"
