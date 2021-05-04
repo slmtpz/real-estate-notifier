@@ -1,0 +1,12 @@
+---
+dist: bionic
+language: python
+python: ["3.8"]
+if: tag IS blank
+install:
+  - pip install --upgrade pip
+  - pip install --upgrade setuptools twine pipenv sphinx sphinx_rtd_theme
+cache: pip
+script: travis/travis.sh
+env:
+  - PIPENV_IGNORE_VIRTUALENVS=1 # Force pipenv to create new virtualenv for each python project
